@@ -1,5 +1,1318 @@
-<body style="height: 100%;">
-    <div id="content" style="width:100%;height: 100%">
-        <img src = "construction.svg" alt="Construction" style="width: inherit;"/>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hari Prasad Ranganathan - Archtiect </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight-color: #4CAF50;
+            --text-color: #E0E0E0;
+            --bg-color: #0a192f;
+            --card-bg: rgba(22, 33, 62, 0.8);
+            --gradient-1: linear-gradient(45deg, #0f3460, #16213e);
+            --gradient-2: linear-gradient(135deg, #1a1a2e, #0f3460);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Navigation */
+        header {
+            background-color: rgba(26, 26, 46, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(26, 26, 46, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight-color);
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .nav-links a.active {
+            color: var(--highlight-color);
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--highlight-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .circuit-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(90deg, rgba(76, 175, 80, 0.1) 1px, transparent 1px),
+                          linear-gradient(rgba(76, 175, 80, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+            animation: circuitMove 20s linear infinite;
+        }
+
+        .ai-nodes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--highlight-color);
+            border-radius: 50%;
+            animation: nodeFloat 3s ease-in-out infinite;
+        }
+
+        .node::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 1px solid var(--highlight-color);
+            border-radius: 50%;
+            left: -4px;
+            top: -4px;
+            animation: nodePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes circuitMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        @keyframes nodeFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes nodePulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .modernization-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .modern-icon {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(100, 255, 218, 0.5);
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0h100v100H0z" fill-opacity=".1" fill="%23fff"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+            background: rgba(10, 25, 47, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--highlight-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 100%;
+            animation: fadeInUp 0.5s ease-out;
+            opacity: 0;
+            transform: translateY(20px);
+            margin-bottom: 30px;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            background: rgba(22, 33, 62, 0.8);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            margin-left: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--highlight-color);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.1);
+        }
+
+        .timeline-content {
+            padding: 20px;
+            position: relative;
+            border-radius: 6px;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--highlight-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+        }
+
+        .timeline-content h3 {
+            color: var(--highlight-color);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content h4 {
+            color: #64ffda;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .timeline-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .timeline-content ul li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #ccd6f6;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .timeline-content ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--highlight-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--highlight-color);
+            top: 50%;
+            transform: translateY(-50%);
+            right: -48px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -8px;
+        }
+
+        .tech-stack {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-stack span {
+            background: rgba(76, 175, 80, 0.1);
+            color: #64ffda;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .tech-stack span:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: translateY(-2px);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .tech-stack span:hover {
+            background: var(--highlight-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                padding: 20px 10px;
+            }
+
+            .timeline-item {
+                padding: 15px 20px;
+            }
+
+            .timeline-content {
+                margin-left: 35px;
+                padding: 20px;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item::before {
+                left: 21px;
+                top: 40px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.3em;
+            }
+
+            .timeline-content h4 {
+                font-size: 1em;
+            }
+
+            .timeline-content ul li {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Projects */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-info {
+            transform: translateY(0);
+        }
+
+        /* Contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+        }
+
+        /* Enhanced Styles */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: var(--gradient-1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0h100v100H0z" fill-opacity=".1" fill="%23fff"/></svg>') repeat;
+            opacity: 0.1;
+            animation: floating 20s ease-in-out infinite;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 0.5s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-item {
+            background: var(--gradient-2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+            animation: glow 2s infinite;
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--highlight-color), #81c784);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        button {
+            background: var(--highlight-color);
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        button:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <h2 style="color: white;">HR</h2>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="circuit-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="ai-nodes" id="ai-nodes"></div>
+        <div class="modernization-icons" id="modern-icons"></div>
+        <div class="hero-content">
+            <h1 class="glitch-text">Hari Prasad Ranganathan</h1>
+            <div class="typewriter">
+                <p id="typing-text"></p>
+            </div>
+            <div class="hero-buttons">
+                <button onclick="window.location.href='#contact'" class="primary-btn">Get in Touch</button>
+                <button onclick="window.location.href='#projects'" class="secondary-btn">View Projects</button>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+        </div>
+        <div class="hero-particles" id="particles-js"></div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+            <p>Experienced Cloud Architect (10+ years) with proven impact driving large-scale application
+modernization and digital transformation for global enterprises. Expert in GCP/AWS,
+Kubernetes, microservice architecture, and delivering measurable business results (20-40%
+cost/performance gains). Trusted advisor to CXOs with hands-on expertise in technical
+pre-sales, solution demonstrations, and commercial architecture proposals, award-winning
+leader, and passionate mentor skilled in cross-functional project delivery and tech strategy.</p>
+        </div>
+    </section>
+
+    <section id="experience" class="container">
+        <h2 class="section-title">Professional Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content card">
+                    <div class="timeline-date">Apr 2021 - Present</div>
+                    <h3>Architect</h3>
+                    <h4>Quantiphi Analytics Solutions Pvt Ltd, Bengaluru</h4>
+                    <ul>
+                        <li>Architected and implemented a custom core banking platform leveraging Java and
+Quarkus, fully hosted on Google Cloud Platform (GCP) native services</li>
+                        <li>Modernized AWS enterprise apps to microservices on GCP , boosting performance by
+30% for Fortune 500 client</li>
+                        <li>Collaborated with pre-sales and go-to-market teams to architect scalable solutions and
+support commercial agreements for cloud transformation projects.</li>
+                        <li>Implemented hybrid-cloud strategy, enabling 20% cost reduction via Kubernetes
+optimization</li>
+                        <li>Built custom serverless workflows, slashing processing time by 35% for energy sector
+clients</li>
+                        <li>Mentored 20+ engineers; drove org-wide best practices in Secure Coding, Software
+Practices, DevOps and automation.</li>
+                        <li>Presented solutions to CXO clients; acted as lead architect on high-value projects</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span>Java</span>
+                        <span>Quarkus</span>
+                        <span>Angular</span>
+                        <span>Apigee</span>
+                        <span>GCP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content card">
+                    <div class="timeline-date">Jun 2018 - Apr 2021</div>
+                    <h3>Senior Software Engineer</h3>
+                    <h4>Enlighted Inc (A Siemens Co), Chennai</h4>
+                    <ul>
+                        <li>Modernized legacy UI with React and delivered full-stack digital twin for smart buildings</li>
+                        <li>Led design of cloud-ready infrastructure (GCP/AWS), accelerating release cycles</li>
+                        <li>Supported mission-critical IoT platforms operating 24/7 across global deployments</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>Angular</span>
+                        <span>PostgreSQL</span>
+                        <span>AWS/GCP/OnPrem</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content card">
+                    <div class="timeline-date">Dec 2015 - Jun 2018</div>
+                    <h3>Senior Application Developer</h3>
+                    <h4>BNY Mellon Technologies , Chennai</h4>
+                    <ul>
+                        <li>Automated VM provisioning, disaster recovery, and network ops, slashing manual cycles
+by 40%</li>
+                        <li>Built cloud-agnostic security tools for auditing, alerting, and IP management</li>
+                        <li>Optimized incident response through automation and real-time dashboards</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span>Java</span>
+                        <span>Angular</span>
+                        <span>MySQL</span>
+                        <span>Spring</span>
+                        <span>Jenkins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud</h3>
+                <p>AWS, Azure, GCP</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-code"></i>
+                <h3>Languages</h3>
+                <p>Java, Python, JavaScript</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <h3>Databases</h3>
+                <p>MongoDB, PostgreSQL</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-brain"></i>
+                <h3>AI/ML</h3>
+                <p>TensorFlow, PyTorch, PromptEngineerig</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-server"></i>
+                <h3>Backend</h3>
+                <p>Spring Boot, Node.js</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Frontend</h3>
+                <p>React, Angular</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>AI-Powered Trading Platform</h3>
+                <p>Developed a real-time trading platform with AI-driven insights and predictive analytics using Spring Boot, React, and TensorFlow.</p>
+                <p><strong>Technologies:</strong> Java, Spring Boot, React, TensorFlow, GCP</p>
+            </div>
+            <div class="card">
+                <h3>Cloud Migration Framework</h3>
+                <p>Created a framework for seamless migration of legacy applications to cloud-native architecture.</p>
+                <p><strong>Technologies:</strong> Docker, Kubernetes, GCP, Terraform</p>
+            </div>
+            <div class="card">
+                <h3>AWS to GCP Migration</h3>
+                <p>Migrated the application from AWS Lambda to GCP Cloud Functions and migrate from DynamoDB to Singlestore(SQL)</p>
+                <p><strong>Technologies:</strong> Java, Quarkus, SQL, GCP</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Hari Prasad Ranganathan. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Hari-Ranganathan" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hari-prasad-ranganathan-066626a0/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:ranganathanprasadhari@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particles.js for background effect -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
+    <script>
+        // Navigation and Scroll handling
+        const header = document.querySelector('header');
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Update navigation state based on scroll position
+        function updateNavigation() {
+            const scrollY = window.scrollY;
+
+            // Header background effect
+            if (scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Update active navigation link
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Smooth scroll with progress indicator
+        function smoothScroll(target, duration = 1) {
+            const targetPosition = document.querySelector(target).offsetTop - 80;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+
+            gsap.to(window, {
+                duration: duration,
+                scrollTo: targetPosition,
+                ease: "power2.inOut"
+            });
+        }
+
+        // Initialize navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('href');
+                smoothScroll(target);
+            });
+        });
+
+        // Scroll event listener
+        window.addEventListener('scroll', () => {
+            updateNavigation();
+        });
+
+        // Initialize scroll position on page load
+        updateNavigation();
+
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    animation: { enable: true, speed: 1, min_value: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    animation: { enable: true, speed: 4, min_value: 0.3, sync: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Typing effect
+        const phrases = [
+            'Cloud Solutions Architect',
+            'Full Stack Developer',
+            'AI Enthusiast',
+            'Innovation Leader'
+        ];
+
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseDuration = 2000;
+
+        function typeEffect() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            const typingElement = document.getElementById('typing-text');
+
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+            }
+
+            if (!isDeleting && currentCharIndex === currentPhrase.length) {
+                isPaused = true;
+                setTimeout(() => {
+                    isPaused = false;
+                    isDeleting = true;
+                }, pauseDuration);
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            }
+
+            const nextSpeed = isDeleting ? deletingSpeed : typingSpeed;
+            if (!isPaused) {
+                setTimeout(typeEffect, nextSpeed);
+            }
+        }
+
+        // Initialize typing effect
+        typeEffect();
+
+        // Create AI nodes
+        function createAINodes() {
+            const aiNodesContainer = document.getElementById('ai-nodes');
+            const numberOfNodes = 15;
+
+            for (let i = 0; i < numberOfNodes; i++) {
+                const node = document.createElement('div');
+                node.className = 'node';
+                node.style.left = `${Math.random() * 100}%`;
+                node.style.top = `${Math.random() * 100}%`;
+                node.style.animationDelay = `${Math.random() * 2}s`;
+                aiNodesContainer.appendChild(node);
+            }
+        }
+
+        // Create modernization icons
+        function createModernIcons() {
+            const iconContainer = document.getElementById('modern-icons');
+            const icons = [
+                'fas fa-cloud',
+                'fas fa-microchip',
+                'fas fa-brain',
+                'fas fa-code-branch',
+                'fas fa-database',
+                'fas fa-network-wired',
+                'fas fa-layer-group',
+                'fas fa-cube',
+                'fas fa-cogs',
+                'fas fa-server'
+            ];
+
+            icons.forEach((iconClass, index) => {
+                const icon = document.createElement('i');
+                icon.className = `modern-icon ${iconClass}`;
+                icon.style.left = `${Math.random() * 90 + 5}%`;
+                icon.style.top = `${Math.random() * 90 + 5}%`;
+                icon.style.animationDelay = `${index * 0.3}s`;
+                iconContainer.appendChild(icon);
+            });
+        }
+
+        // Update particles configuration for AI theme
+        const particlesConfig = {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#4CAF50', '#64ffda', '#ffffff']
+                },
+                shape: {
+                    type: ['circle', 'triangle'],
+                },
+                opacity: {
+                    value: 0.6,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 1,
+                        minimumValue: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 4,
+                        minimumValue: 0.3,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#64ffda',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: ['grab', 'bubble']
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 200,
+                        size: 6,
+                        duration: 2,
+                        opacity: 0.8,
+                        speed: 3
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        };
+
+        // Initialize particles with new configuration
+        particlesJS('particles-js', particlesConfig);
+
+        // Initialize AI nodes and modern icons
+        createAINodes();
+        createModernIcons();
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // Animate timeline items
+        gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+            gsap.fromTo(item, 
+                {
+                    opacity: 0,
+                    y: 50,
+                    scale: 0.9
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top bottom-=150',
+                        end: 'top center',
+                        toggleActions: 'play none none reverse',
+                        scrub: 1,
+                        markers: false
+                    }
+                }
+            );
+
+            // Animate timeline line
+            if (i === 0) {
+                gsap.fromTo('.timeline::before',
+                    {
+                        scaleY: 0,
+                        transformOrigin: 'top'
+                    },
+                    {
+                        scaleY: 1,
+                        duration: 2,
+                        scrollTrigger: {
+                            trigger: '.timeline',
+                            start: 'top center',
+                            end: 'bottom center',
+                            scrub: true
+                        }
+                    }
+                );
+            }
+        });
+
+        // Animate skill items
+        gsap.utils.toArray('.skill-item').forEach((item, i) => {
+            gsap.from(item, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.5,
+                delay: i * 0.1,
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top bottom-=100',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: this.getAttribute('href'),
+                    ease: 'power2.inOut'
+                });
+            });
+        });
+
+        // Form submission handler with animation
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            gsap.to(this, {
+                scale: 0.95,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 1,
+                onComplete: () => {
+                    alert('Thank you for your message! I will get back to you soon.');
+                    this.reset();
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .skill-item').forEach((el) => observer.observe(el));
+    </script>
 </body>
+</html>
